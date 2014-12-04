@@ -31,14 +31,14 @@ def getAverageScreenColor():
     return red, green, blue
 
 
-""" Formula for brightness found here: http://stackoverflow.com/questions/596216/formula-to-determine-brightness-of-rgb-color
+""" Formula for brightness found here: 
+    http://stackoverflow.com/questions/596216/
+    formula-to-determine-brightness-of-rgb-color
 """
-
 # sRGB luminance(Y) values
 rY = 0.212655
 gY = 0.715158
 bY = 0.072187
-
 
 # Inverse of sRGB "gamma" function. (approx 2.2)
 def inv_gam_sRGB(ic):
