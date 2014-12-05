@@ -35,11 +35,12 @@ bridge = Bridge('192.168.1.101')
 
 
 while True:
-    r, g, b = functions.getAverageScreenColor()
+    red, green, blue = functions.getAverageScreenColor()
+    r, g, b = functions.zero_check(red, green, blue)    
     x, y = converter.rgbToCIE1931(r, g, b)
     bri = int(round(functions.gray(r, g, b)))
     command = {'transitiontime' : 4, 'bri' : bri, 'xy' : [x, y]}
-    bridge.set_light(1, command)
+    bridge.set_light([1, 2, 3], command)
 
 
 #b.get_api()

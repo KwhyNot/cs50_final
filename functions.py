@@ -30,6 +30,14 @@ def getAverageScreenColor():
     os.remove("screenshot.png")
     return red, green, blue
 
+def zero_check(red, green, blue):
+    if red + green + blue < 0.001:
+        red = 0.001
+        green = 0.001 
+        blue = 0.001
+    return red, green, blue
+        
+
 
 """ Formula for brightness found here: 
     http://stackoverflow.com/questions/596216/
