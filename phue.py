@@ -407,8 +407,7 @@ class Bridge(object):
 
         Parameters:
         ------------
-        ip : string
-            IP address as dotted quad
+        ip : string IP address as dotted quad
         username : string, optional
 
         """
@@ -552,7 +551,7 @@ class Bridge(object):
                             'Using username from config: ' + self.username)
                     else:
                         logger.info('Using username: ' + self.username)
-            except Exception as e:
+            except Exception:
                 logger.info(
                     'Error opening config file, will attempt bridge registration')
                 self.register_app()

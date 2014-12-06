@@ -6,12 +6,29 @@ Created on Fri Nov 21 19:50:33 2014
 """
 
 import os
+import tempfile
 from PIL import Image
 from subprocess import call
 
-def getAverageScreenColor():   
+
+def screenshot():   
+    tf = tempfile.NamedTemporaryFile(suffix='.png')  
+    print tf.name  # retrieve the name of the temp file just created
+    call(["screencapture", "-x", tf.name])
+    screen = Image.open(tf.name)
+    red, green, blue = averageRGB(screen)
+    red, green, blue = zero_check(red, green, blue)
+#    os.remove("screenshot.png")
+    return red, green, blue      
+    
+"""    
     call(["screencapture", "-x", "screenshot.png"]) 
-    screen = Image.open("screenshot.png")   
+    screen = Image.open("screenshot.png")
+"""
+      
+
+
+def averageRGB(screen):  
     left, top, width, height = screen.getbbox()
     red, green, blue = 0.0, 0.0, 0.0
     for y in range(0, height, 8):
@@ -27,22 +44,28 @@ def getAverageScreenColor():
         blue /= total
     if green != 0:
         green /= total
-    os.remove("screenshot.png")
     return red, green, blue
-
+    
+    
 def zero_check(red, green, blue):
     if red + green + blue < 0.001:
         red = 0.001
         green = 0.001 
         blue = 0.001
     return red, green, blue
-        
 
 
 """ Formula for brightness found here: 
-    http://stackoverflow.com/questions/596216/
-    formula-to-determine-brightness-of-rgb-color
+    http://en.wikipedia.org/wiki/Luma_(video)
 """
+def brightness(red, green, blue):
+    brightness = 0.2126*red + 0.7152*green + 0.0722*blue
+    return brightness
+
+
+
+"""
+
 # sRGB luminance(Y) values
 rY = 0.212655
 gY = 0.715158
@@ -71,14 +94,10 @@ def gray(r, g, b):
             gY*inv_gam_sRGB(g) +
             bY*inv_gam_sRGB(b)
     )
-
-
-
 """
-def brightness(r, g, b):
-    bri = ((r/255.0 + g/255.0 + b/255.0)/)
-    return bri
-"""
+
+
+
 
 
 """ 
