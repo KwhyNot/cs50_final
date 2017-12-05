@@ -1,4 +1,4 @@
-## aurora - My cs50 final project
+## aurora
 
 Aurora iteratively takes screenshots of the main screen of the computer, calculates 
 the average color values and brightness, and sends that information, via the Hue bridge, 
@@ -28,5 +28,8 @@ or even to just have the lights match their content as they browse the web, the 
 open up a terminal window, navigate to the directory containing Aurora, and execute 
 "python aurora.py". To terminate the process the user can just press ctrl-c and then confirm
 that they wish to exit by entering "y".
+
+This was originally my final project for cs50 (Harvard intro to computer science),
+but figured other folks might find it interesting/useful too.
 
 Enjoy!
