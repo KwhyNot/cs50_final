@@ -1,7 +1,4 @@
-# aurora
-Christopher Murphy
-
-My cs50 final project
+## aurora - My cs50 final project
 
 Aurora iteratively takes screenshots of the main screen of the computer, calculates 
 the average color values and brightness, and sends that information, via the Hue bridge, 
