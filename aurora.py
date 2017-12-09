@@ -23,7 +23,7 @@ from rgb_cie import Converter
 """ Set the appropriate IP address for your bridge, and specify light ID(s) 
     for whichever lights you want to include.
 """
-bridgeIP = "192.168.1.101"
+bridgeIP = "192.168.1.1"
 lightID = [1,2,3]
 converter = Converter()
 bridge = Bridge(bridgeIP)
